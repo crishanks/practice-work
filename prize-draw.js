@@ -61,7 +61,7 @@ function rank(st, we, n) {
       return aChar - bChar;
     }
   });
-  console.log(sortedNames);
+  //console.log(sortedNames);
 
   const sameNameValues = [];
   for (let key in nameObject) {
