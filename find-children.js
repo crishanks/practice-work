@@ -18,6 +18,7 @@ function findChildren(str) {
   for (let key in lettersObject) {
     const currentValue = lettersObject[key];
     result += key + currentValue.join('');
+    console.log(lettersObject);
   }
   return result;
 }
