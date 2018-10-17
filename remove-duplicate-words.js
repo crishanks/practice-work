@@ -1,5 +1,6 @@
 function duplicates(str) {
   const replaceAlpha = str.match(/alpha/g);
+  console.log(replaceAlpha);
   return replaceAlpha;
 
 }
