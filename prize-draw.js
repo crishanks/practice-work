@@ -28,7 +28,6 @@ function rank(st, we, n) {
     finalScores.push(nameValues[i] * we[i]);
   }
 
-  console.log(finalScores);
   const namesArray = st.split(',');
   const nameObject = {};
   for (let i = 0; i < namesArray.length; i++) {
@@ -49,7 +48,6 @@ function rank(st, we, n) {
     return [name, nameObject[name]];
   });
 
-  console.log('nameArray: ', nameArray);
   const sortedNames = nameArray.sort(function(a, b) {
     const aValue = a[1];
     const bValue = b[1];

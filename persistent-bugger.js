@@ -18,6 +18,7 @@ function persistence(num) {
       sum = 1;
     }
     while (multiplicationResult >= 10);
+    console.log(timesMulitplied);
 
   }
   return timesMulitplied;
