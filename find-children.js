@@ -4,7 +4,6 @@ function findChildren(str) {
   const rearrangedString = str.split('').sort(function(a,b) {
     return a.charCodeAt() - b.charCodeAt();
   });
-  console.log(rearrangedString);
 
   for (let i = 0; i < rearrangedString.length; i++) {
     const currentLetter = rearrangedString[i];
@@ -18,7 +17,6 @@ function findChildren(str) {
   for (let key in lettersObject) {
     const currentValue = lettersObject[key];
     result += key + currentValue.join('');
-    console.log(lettersObject);
   }
   return result;
 }
