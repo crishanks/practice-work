@@ -28,13 +28,14 @@ function addPros(map) {
     const jobAndPeople = [[job], map[job]];
     result.push(jobAndPeople);
   });
-  return result;
+  return result.sort((a, b) => {
+    const job1 = a[0][0];
+    const job2 = b[0][0];
+    const sortedJobs = [job1, job2].sort();
+    if (sortedJobs[0] === job1) {
+      return -1;
+    } else {
+      return 1;
+    }
+  });
 }
-
-proCategorization(["Jack",  "Leon",  "Maria"],  [
-
- ["Computer repair","Handyman","House cleaning"],
- ["Computer lessons","Computer repair","Data recovery service"],
- ["Computer lessons","House cleaning"]
-
- ]);
