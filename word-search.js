@@ -1,38 +1,28 @@
-function createGrid(words, puzzle) {
-  const puzzleLength = puzzle.length;
+function findRowLengthToCreateSquareGrid(word, letters) {
   let rowLength;
   let i = 1;
-  while (i < puzzleLength) {
-    if (i * i === puzzleLength) {
+  while (i < letters.length) {
+    if (i * i === letters.length) {
       rowLength = i;
+      break;
     }
-    i++;
   }
+  return rowLength;
+}
 
+function createGrid(rowLength, letters) {
   let grid = [];
-  console.log(puzzle);
-  for (let i = 0; i < puzzleLength; i += rowLength) {
-    const letterRow = puzzle.slice(i, i + rowLength);
-    rows.push(letterRow)
+  for (let i = 0; i < letters.length; i += rowLength) {
+    const currentLetter = letters[i];
+    const rowLetters = letters.slice(i, i + rowLength)
+    grid.push(rowLetters);
   }
   return grid;
 }
 
-function getLongestWord(words, grid) {
-  let longestWord = words[0];
-  for (let i = 0; i < words.length; i++) {
-    const currentWord = words[i];
-    if (currentWord.length > longestWord.length) {
-      longestWord = currentWord;
-    }
-  }
-  return longestWord;
-}
-
-function checkHorizontal(word, grid) {
-  for(let row = 0; row < grid.length; row++) {
-    const currentRow = grid[row];
-    console.log(currentRow)
+function searchHorizontal(word, grid) {
+  for (let i = 0; i < grid[0].length; i++) {
+    const currentRow = grid[i];
     if (currentRow.includes(word)) {
       return true;
     }
@@ -40,53 +30,68 @@ function checkHorizontal(word, grid) {
   return false;
 }
 
-function checkVertical(word, grid) {
-  const squareLength = grid[0].length;
-  for (let row = 0; row < squareLength; row++) {
-    let columnLetters = '';
-    for (let column = 0; column < squareLength; column++) {
-      const currentLetter = grid[column][row];
-      columnLetters += currentLetter;
+function searchVertical(word, grid) {
+  console.log(grid);
+  let verticalGrid = '';
+  for (let i = 0; i < grid[0].length; i++) {
+    const currentRow = grid[i];
+    for (let j = 0; j < grid[0].length; j++) {
+      const currentLetter = grid[j][i];
+      verticalGrid += currentLetter;
     }
-
-    if (columnLetters.includes(word)) {
+    if (verticalGrid.includes(word)) {
       return true;
     }
   }
   return false;
-
-
 }
 
-// function checkDiagonal() {
+function assignGridLetterValues(grid) {
+  let letterPositions = [];
+  let columnPositionNumbers = 1;
+  let letterInAscii = 'A'.charCodeAt();
+  let eachRow = [];
+  for (let i = 0; i < grid[0].length; i++) {
+    for (let j = 0; j < grid[0].length; j++) {
+      eachRow.push(String.fromCharCode(letterInAscii) + columnPositionNumbers.toString());
+      letterInAscii++;
+    }
+    letterPositions.push(eachRow);
+    eachRow = [];
+    letterInAscii = 'A'.charCodeAt();
+    columnPositionNumbers++;
+  }
+  return letterPositions;
+}
 
-// }
+function returnWordPositions(grid, letterPositions) {
+  let result = [];
+  const horizontal = searchHorizontal(word, grid);
+  const vertical = searchVertical(word, grid);
+  if (horizontal) {
+    for (let i = 0; i < letterPositions[0].length; i++) {
+      result.push(letterPositions.slice())
+    }
+  }
+}
 
-
-
-checkHorizontal("HELLO",
-['FHELLPPD',
- 'FEOGIOPV',
- 'FLDKOIAQ',
- 'FLWIHQRM',
- 'UOTOXNRI',
- 'AAESRUOF',
- 'CUHHELTU',
- 'FJJSNJDO']);
-
-// checkVertical("HELLO",
-// [
-//   'FHKEFFHD',
+// assignGridLetterValues(
+// [ 'FHKEFFHD',
 //   'FEOGIOPV',
 //   'FLDKOIAQ',
 //   'FLWIHQRM',
 //   'UOTOXNRI',
 //   'AAESRUOF',
 //   'CUHHELTU',
-//   'FJJSNJDO'
-// ]);
+//   'FJJSNJDO'])
 
 
-// createPuzzle(['HELLO', 'WORLD'], 'FHKEFFHDFEOGIOPVFLDKOIAQFLWIHQRMUOTOXNRIAAESRUOFCUHHELTUFJJSNJDO');
-// [ [ 'B1', 'B2', 'B3', 'B4', 'B5' ],
-//   [ 'C4', 'D5', 'E6', 'F7', 'G8' ] ]);
+searchHorizontal('HELLO',
+[ 'FHEEIDPD',
+  'FEOGIOPV',
+  'FLDKOIAQ',
+  'FLWIHQRM',
+  'UOTOXNRI',
+  'AAESRUOF',
+  'CUHHELTU',
+  'FJJSNJDO' ]);
