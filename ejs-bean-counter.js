@@ -9,3 +9,13 @@ function countBs(str) {
 }
 
 countBs('bbBBBCcdefG');
+function countChar(str, letter) {
+  let letterCount = 0;
+  str.split('').forEach((checkLetter) => {
+    if (checkLetter === letter) {
+      letterCount++;
+    }
+  });
+  return letterCount;
+}
+countChar('hasjfakwebfHHH', 'H');
