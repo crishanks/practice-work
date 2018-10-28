@@ -1,5 +1,4 @@
 function chooseBestSum(maxMiles, numOfTowns, arrOfDistances) {
-console.log(maxMiles, numOfTowns, arrOfDistances)
   if (arrOfDistances.length < numOfTowns) {
     return null;
   }
