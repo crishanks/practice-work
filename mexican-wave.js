@@ -1,18 +1,15 @@
 function wave(str){
     let result = [];
-    for (let i = 0; i < str.length; i++) {
-      for (let j = 0; j < str.length; j++) {
-        if (str[j] === ' ') {
+      for (let i = 0; i < str.length; i++) {
+        if (str[i] === ' ') {
           continue;
         } else {
-          const changingLetter = str[j].toUpperCase();
-          const beforeLetters = str.slice(i, j);
-          const afterLetters = str.slice(j + 1);
+          const changingLetter = str[i].toUpperCase();
+          const beforeLetters = str.slice(0, i);
+          const afterLetters = str.slice(i + 1);
           result.push(beforeLetters + changingLetter + afterLetters);
         }
       }
-      break;
-    }
     return result;
   }
   
