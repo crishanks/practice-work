@@ -11,7 +11,7 @@ function fib(num) {
     //how do we get to the base case?
     const firstFibNumbers = fib(num - 1);
 
-    //create the sequence
+    //create the sequence - each time the function calls itself above, it makes a copy of the intire fib function and remembers it in the stack.
     const lastIndex = firstFibNumbers.length - 1;
     const secondToLastIndex = firstFibNumbers.length - 2;
     const newFibSequence = firstFibNumbers[lastIndex] + firstFibNumbers[secondToLastIndex];
