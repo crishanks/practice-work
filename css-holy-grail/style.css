@@ -1,0 +1,36 @@
+body {
+    min-width: 550px;
+}
+
+#container {
+    padding-left: 200px;
+    padding-right: 150px;
+}
+
+#container .column {
+    float: left;
+    position: relative;
+}
+
+#left {
+    width: 180px;
+    padding: 0 10px;
+    right: 200px;
+    background: red;
+    margin-left: -100%
+}
+
+#center {
+    width: 100%;
+    background: gray;
+}
+
+#right {
+    width: 150px;
+    margin-right: -150px;
+    background: blue;
+}
+
+#footer {
+    clear: both;
+}
