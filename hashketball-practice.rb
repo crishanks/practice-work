@@ -133,3 +133,17 @@ def num_points_scored name
 end
 
 num_points_scored "Brendan Haywood" #6
+
+def shoe_size name
+    game_hash.each do |location, team_info|
+      team_info[:players].each do |player|
+          if name == player[:player_name]
+            return player[:shoe]
+          end
+        end
+    end
+  end
+  
+  shoe_size "Ben Gordon" #15
+
+  
