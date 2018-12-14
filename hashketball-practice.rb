@@ -146,4 +146,12 @@ def shoe_size name
   
   shoe_size "Ben Gordon" #15
 
+  def team_colors team
+    game_hash.each do |location, team_info|
+      if team_info[:team_name] == team
+        return team_info[:colors]
+      end
+    end
+  end
   
+  team_colors 'Charlotte Hornets' #['Turquoise', 'Purple']
