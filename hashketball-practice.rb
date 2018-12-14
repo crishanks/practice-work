@@ -197,3 +197,29 @@ def shoe_size name
   end
   
   player_stats 'DeSagna Diop' #{:number=>2, :shoe=>14, :points=>24, :rebounds=>12, :assists=>12, :steals=>4, :blocks=>5, :slam_dunks=>5}
+
+  def find_biggest_shoe
+    biggest_shoe = 0
+    game_hash.each do |location, team_info|
+      team_info[:players].each do |player_hash|
+        if player_hash[:shoe] > biggest_shoe
+          biggest_shoe = player_hash[:shoe]
+        end
+      end
+    end
+    biggest_shoe
+  end
+  
+  find_biggest_shoe #19
+  
+  def big_shoe_rebounds biggest_shoe
+    game_hash.each do |location, team_info|
+      team_info[:players].each do |player_hash|
+        if player_hash[:shoe] == biggest_shoe
+          return player_hash[:rebounds]
+        end
+      end
+    end
+  end
+  
+  big_shoe_rebounds #12
