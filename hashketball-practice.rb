@@ -179,3 +179,21 @@ def shoe_size name
   end
   
   player_numbers 'Charlotte Hornets' #[4, 0, 2, 8, 33]
+
+  def player_stats name
+    player_stats_minus_name = {}
+    game_hash.each do |location, team_info|
+      team_info[:players].each do |player_hash|
+        if player_hash[:player_name] == name
+          player_hash.each do |key, value|
+            if key != :player_name
+              player_stats_minus_name[key] = value
+            end
+          end
+        end
+      end
+    end
+    player_stats_minus_name
+  end
+  
+  player_stats 'DeSagna Diop' #{:number=>2, :shoe=>14, :points=>24, :rebounds=>12, :assists=>12, :steals=>4, :blocks=>5, :slam_dunks=>5}
