@@ -165,3 +165,17 @@ def shoe_size name
   end
   
   team_names #["Brooklyn Nets", "Charlotte Hornets"]
+
+  def player_numbers team_name
+    jersey_numbers = []
+    game_hash.each do |location, team_info|
+      if team_name == team_info[:team_name]
+        team_info[:players].each do |player_hash|
+          jersey_numbers << player_hash[:number]
+        end
+      end
+    end
+    jersey_numbers
+  end
+  
+  player_numbers 'Charlotte Hornets' #[4, 0, 2, 8, 33]
