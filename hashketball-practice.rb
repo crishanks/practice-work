@@ -155,3 +155,13 @@ def shoe_size name
   end
   
   team_colors 'Charlotte Hornets' #['Turquoise', 'Purple']
+
+  def team_names
+    teams = []
+    game_hash.each do |location, team_info|
+      teams << team_info[:team_name]
+    end
+    teams
+  end
+  
+  team_names #["Brooklyn Nets", "Charlotte Hornets"]
