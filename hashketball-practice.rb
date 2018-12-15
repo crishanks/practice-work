@@ -146,118 +146,132 @@ def shoe_size name
   
   shoe_size "Ben Gordon" #15
 
-  def team_colors team
-    game_hash.each do |location, team_info|
-      if team_info[:team_name] == team
-        return team_info[:colors]
-      end
+def team_colors team
+  game_hash.each do |location, team_info|
+    if team_info[:team_name] == team
+      return team_info[:colors]
     end
   end
-  
-  team_colors 'Charlotte Hornets' #['Turquoise', 'Purple']
+end
 
-  def team_names
-    teams = []
-    game_hash.each do |location, team_info|
-      teams << team_info[:team_name]
-    end
-    teams
+team_colors 'Charlotte Hornets' #['Turquoise', 'Purple']
+
+def team_names
+  teams = []
+  game_hash.each do |location, team_info|
+    teams << team_info[:team_name]
   end
-  
-  team_names #["Brooklyn Nets", "Charlotte Hornets"]
+  teams
+end
 
-  def player_numbers team_name
-    jersey_numbers = []
-    game_hash.each do |location, team_info|
-      if team_name == team_info[:team_name]
-        team_info[:players].each do |player_hash|
-          jersey_numbers << player_hash[:number]
-        end
-      end
-    end
-    jersey_numbers
-  end
-  
-  player_numbers 'Charlotte Hornets' #[4, 0, 2, 8, 33]
+team_names #["Brooklyn Nets", "Charlotte Hornets"]
 
-  def player_stats name
-    player_stats_minus_name = {}
-    game_hash.each do |location, team_info|
+def player_numbers team_name
+  jersey_numbers = []
+  game_hash.each do |location, team_info|
+    if team_name == team_info[:team_name]
       team_info[:players].each do |player_hash|
-        if player_hash[:player_name] == name
-          player_hash.each do |key, value|
-            if key != :player_name
-              player_stats_minus_name[key] = value
-            end
+        jersey_numbers << player_hash[:number]
+      end
+    end
+  end
+  jersey_numbers
+end
+
+player_numbers 'Charlotte Hornets' #[4, 0, 2, 8, 33]
+
+def player_stats name
+  player_stats_minus_name = {}
+  game_hash.each do |location, team_info|
+    team_info[:players].each do |player_hash|
+      if player_hash[:player_name] == name
+        player_hash.each do |key, value|
+          if key != :player_name
+            player_stats_minus_name[key] = value
           end
         end
       end
     end
-    player_stats_minus_name
   end
-  
-  player_stats 'DeSagna Diop' #{:number=>2, :shoe=>14, :points=>24, :rebounds=>12, :assists=>12, :steals=>4, :blocks=>5, :slam_dunks=>5}
+  player_stats_minus_name
+end
 
-  def find_biggest_shoe
-    biggest_shoe = 0
-    game_hash.each do |location, team_info|
-      team_info[:players].each do |player_hash|
-        if player_hash[:shoe] > biggest_shoe
-          biggest_shoe = player_hash[:shoe]
-        end
-      end
-    end
-    biggest_shoe
-  end
-  
-  find_biggest_shoe #19
-  
-  def big_shoe_rebounds biggest_shoe
-    game_hash.each do |location, team_info|
-      team_info[:players].each do |player_hash|
-        if player_hash[:shoe] == biggest_shoe
-          return player_hash[:rebounds]
-        end
+player_stats 'DeSagna Diop' #{:number=>2, :shoe=>14, :points=>24, :rebounds=>12, :assists=>12, :steals=>4, :blocks=>5, :slam_dunks=>5}
+
+def find_biggest_shoe
+  biggest_shoe = 0
+  game_hash.each do |location, team_info|
+    team_info[:players].each do |player_hash|
+      if player_hash[:shoe] > biggest_shoe
+        biggest_shoe = player_hash[:shoe]
       end
     end
   end
-  
-  big_shoe_rebounds #12
+  biggest_shoe
+end
 
-  def most_points_scored
-    player_with_most_points = nil
-    most_points = 0
-    game_hash.each do |location, team_info|
-      team_info[:players].each do |player_hash|
-        if player_hash[:points] > most_points
-          most_points = player_hash[:points]
-          player_with_most_points = player_hash[:player_name]
-        end
+find_biggest_shoe #19
+
+def big_shoe_rebounds biggest_shoe
+  game_hash.each do |location, team_info|
+    team_info[:players].each do |player_hash|
+      if player_hash[:shoe] == biggest_shoe
+        return player_hash[:rebounds]
       end
     end
-    player_with_most_points
   end
-  
-  most_points_scored #'Ben Gordon'
+end
 
-  def winning_team
-    home_score = 0
-    away_score = 0
-    game_hash[:home][:players].each do |player_hash|
-      home_score += player_hash[:points]
+big_shoe_rebounds #12
+
+def most_points_scored
+  player_with_most_points = nil
+  most_points = 0
+  game_hash.each do |location, team_info|
+    team_info[:players].each do |player_hash|
+      if player_hash[:points] > most_points
+        most_points = player_hash[:points]
+        player_with_most_points = player_hash[:player_name]
+      end
     end
-  
-    game_hash[:away][:players].each do |player_hash|
-      away_score += player_hash[:points]
-    end
-  
-    if home_score > away_score
-      return game_hash[:home][:team_name]
-    end
-    game_hash[:away][:team_name]
   end
-  
-  winning_team #'Brooklyn Nets'
+  player_with_most_points
+end
+
+most_points_scored #'Ben Gordon'
+
+def winning_team
+  home_score = 0
+  away_score = 0
+  game_hash[:home][:players].each do |player_hash|
+    home_score += player_hash[:points]
+  end
+
+  game_hash[:away][:players].each do |player_hash|
+    away_score += player_hash[:points]
+  end
+
+  if home_score > away_score
+    return game_hash[:home][:team_name]
+  end
+  game_hash[:away][:team_name]
+end
+
+winning_team #'Brooklyn Nets'
+
+def player_with_longest_name
+  longest_name = ''
+  game_hash.each do |location, team_info|
+    team_info[:players].each do |player_hash|
+      if player_hash[:player_name].length > longest_name.length
+        longest_name = player_hash[:player_name]
+      end
+    end
+  end
+  longest_name
+end
+
+player_with_longest_name #'Brendan Haywood'
 
 
 
