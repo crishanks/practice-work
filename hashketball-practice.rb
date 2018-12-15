@@ -212,10 +212,11 @@ end
 
 find_biggest_shoe #19
 
-def big_shoe_rebounds biggest_shoe
+def big_shoe_rebounds
+  the_biggest_shoe = find_biggest_shoe
   game_hash.each do |location, team_info|
     team_info[:players].each do |player_hash|
-      if player_hash[:shoe] == biggest_shoe
+      if player_hash[:shoe] == the_biggest_shoe
         return player_hash[:rebounds]
       end
     end
@@ -272,6 +273,35 @@ def player_with_longest_name
 end
 
 player_with_longest_name #'Brendan Haywood'
+
+def most_steals_total
+  most_steals = 0
+  game_hash.each do |location, team_data|
+    team_data[:players].each do |player_hash|
+      if player_hash[:steals] > most_steals
+        most_steals = player_hash[:steals]
+      end
+    end
+  end
+  most_steals
+end
+
+most_steals_total #22
+
+def long_name_steals_a_ton? 
+  the_longest_name = player_with_longest_name
+  the_most_steals = most_steals_total
+  game_hash.each do |location, team_data|
+    team_data[:players].each do |player_hash|
+      if player_hash[:player_name] == the_longest_name && player_hash[:steals] == the_most_steals
+        return true
+      end
+    end
+  end
+  false
+end
+
+long_name_steals_a_ton? #true
 
 
 
