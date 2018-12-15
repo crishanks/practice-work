@@ -239,3 +239,25 @@ def shoe_size name
   end
   
   most_points_scored #'Ben Gordon'
+
+  def winning_team
+    home_score = 0
+    away_score = 0
+    game_hash[:home][:players].each do |player_hash|
+      home_score += player_hash[:points]
+    end
+  
+    game_hash[:away][:players].each do |player_hash|
+      away_score += player_hash[:points]
+    end
+  
+    if home_score > away_score
+      return game_hash[:home][:team_name]
+    end
+    game_hash[:away][:team_name]
+  end
+  
+  winning_team #'Brooklyn Nets'
+
+
+
