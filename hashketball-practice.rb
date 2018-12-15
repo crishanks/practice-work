@@ -223,3 +223,19 @@ def shoe_size name
   end
   
   big_shoe_rebounds #12
+
+  def most_points_scored
+    player_with_most_points = nil
+    most_points = 0
+    game_hash.each do |location, team_info|
+      team_info[:players].each do |player_hash|
+        if player_hash[:points] > most_points
+          most_points = player_hash[:points]
+          player_with_most_points = player_hash[:player_name]
+        end
+      end
+    end
+    player_with_most_points
+  end
+  
+  most_points_scored #'Ben Gordon'
