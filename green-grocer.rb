@@ -21,24 +21,24 @@ end
   
   consolidate_cart cart
 
-#   def apply_coupons cart_before_coupons, coupons
-#     cart_after_coupons = {}
-#     cart_before_coupons.each do |item, attributes_hash|
-#       coupons.each do |coupon|
-#         if coupon[:item] == item
-#           cart_after_coupons[item] = attributes_hash
-#           cart_after_coupons[item][:count] -= coupon[:num]
-#           cart_after_coupons[`#{item} W/ COUPON`] = attributes_hash
-#           cart_after_coupons[`#{item} W/ COUPON`][:count] = attributes_hash[:count] - coupon[:num]
-#         else
-#           cart_after_coupons[item] = attributes_hash
-#         end
-#       end
-#     end
-#     cart_after_coupons
-#   end
+def apply_coupons coupons
+    cart_before_coupons = consolidate_cart(cart)
+    cart_after_coupons = {}
+
+    cart_before_coupons.each do |item, attributes_hash|
+        cart_after_coupons[item] = attributes_hash
+            coupons.each do |coupon|
+                if coupon[:item] == item
+                    cart_after_coupons[item][:count] -= coupon[:num]
+                    cart_after_coupons["#{item} W/ COUPON"] = attributes_hash
+                    cart_after_coupons["#{item} W/ COUPON"][:count] = attributes_hash[:count] - coupon[:num]
+                end
+            end
+        end
+    cart_after_coupons
+end
   
-#   apply_coupons ({"AVOCADO"=>{:price=>3.0, :clearance=>true, :count=>2}, "KALE"=>{:price=>3.0, :clearance=>false, :count=>1}}, {:item => "AVOCADO", :num => 2, :cost => 5.0})
+  apply_coupons ({"AVOCADO"=>{:price=>3.0, :clearance=>true, :count=>2}, "KALE"=>{:price=>3.0, :clearance=>false, :count=>1}}, {:item => "AVOCADO", :num => 2, :cost => 5.0})
 
 def apply_clearance cart
     cart.each do |item, attributes|
@@ -59,7 +59,7 @@ def checkout cart, coupons
     consolidated_cart_after_coupons.each do |item, attributes|
         total_cost += attributes[:price]
     end
-    
+
     if total_cost > 100
         total_cost *= 0.9
     end
