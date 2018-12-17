@@ -19,7 +19,7 @@ def consolidate_cart cart
     consolidated_cart
 end
   
-  consolidate_cart cart
+#   consolidate_cart cart
 
 def apply_coupons coupons
     cart_before_coupons = consolidate_cart(cart)
@@ -38,7 +38,7 @@ def apply_coupons coupons
     cart_after_coupons
 end
   
-  apply_coupons ({"AVOCADO"=>{:price=>3.0, :clearance=>true, :count=>2}, "KALE"=>{:price=>3.0, :clearance=>false, :count=>1}}, {:item => "AVOCADO", :num => 2, :cost => 5.0})
+#   apply_coupons ({"AVOCADO"=>{:price=>3.0, :clearance=>true, :count=>2}, "KALE"=>{:price=>3.0, :clearance=>false, :count=>1}}, {:item => "AVOCADO", :num => 2, :cost => 5.0})
 
 def apply_clearance cart
     cart.each do |item, attributes|
@@ -49,7 +49,7 @@ def apply_clearance cart
     cart
 end
 
-apply_clearance
+# apply_clearance
 
 def checkout cart, coupons
     total_cost = 0
