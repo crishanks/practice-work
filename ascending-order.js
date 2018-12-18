@@ -1,5 +1,5 @@
 function isAscending(str) {
-    for (let i = 0; i < str.length - 1; i++) {
+    for (let i = 0; i < str.length - 1; i++) { //O(n)
       const currentLetter = str[i];
       const nextLetter = str[i + 1];
       if (nextLetter.charCodeAt(0) < currentLetter.charCodeAt(0)) {
@@ -8,12 +8,13 @@ function isAscending(str) {
     }
     return true;
   }
+  //function is O(n)
   
   function largestAscendingSubstring(str) {
     let result = '';
-    for (let i = 0; i < str.length; i++) {
+    for (let i = 0; i < str.length; i++) { //O(n)
       const slicedString = str.slice(i);
-      for (let j = 0; j < slicedString.length; j++) {
+      for (let j = 0; j < slicedString.length; j++) { //O(n^2) since nested loop will check each item in the outer array for each item in the inner array.
         const checkedSubstring = slicedString.slice(0, j + 1);
         const isInAscendingOrder = isAscending(checkedSubstring);
         if (isInAscendingOrder && checkedSubstring.length > result.length) {
@@ -23,6 +24,7 @@ function isAscending(str) {
     }
     return result;
   }
+  //function is O(n^2)
   
   largestAscendingSubstring('adealszjdf'); //'alsz'
   
