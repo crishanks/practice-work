@@ -8,4 +8,4 @@ function validParenthesis(str) {
     return true;
   }
   
-  validParenthesis("(())((()())())")
+  validParenthesis("(())((()())())")//true;
