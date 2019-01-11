@@ -5,7 +5,6 @@
 }
 
 body {
-    margin: 0;
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -35,11 +34,15 @@ a {
 
 .sidebar h2 {
     font-size: 12px;
-    padding: 12px;
+    margin: 20%;
 }
  
 #sidebar-content {
     margin: 0% 10%;
+}
+
+.sidebar li {
+    margin: 15%;
 }
 
 .sidebar p {
@@ -50,7 +53,6 @@ a {
 .sidebar a {
     display: block;
     color: rgba(204, 204, 204, 0.726);
-    padding: 12px;
 }
 
 .sidebar a:hover {
@@ -62,13 +64,13 @@ a {
 }
 
 .sidebar button {
-    margin: 20px 10%;;
     font-size: 16px;
     background-color: black;
     border-color: white;
     color: white;
     padding: 5px 10px;
     border-radius: 5px;
+    margin-left: 10%;
 }
 
 .sidebar button:hover {
@@ -89,7 +91,9 @@ a {
 
 #sign-in {
     color: white;
-    padding: 0% 21%;
+    font-weight: 200;
+    margin-top: 20%;
+    margin-left: 10%;
 }
 
 #sign-in:hover {
