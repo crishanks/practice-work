@@ -6,6 +6,7 @@
 
 body {
     font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
 }
 
 ul {
@@ -14,6 +15,7 @@ ul {
 
 a {
     text-decoration: none;
+    cursor: pointer;
 }
 
 /* Sidebar Styles */
@@ -131,8 +133,8 @@ a {
 .hero-text button {
     position: relative;
     margin-top: 20px;
-    padding: 5px;
-    border-radius: 25px;
+    padding: 10px;
+    border-radius: 10px;
     background-color: black;
     color: white;
 }
@@ -147,12 +149,93 @@ a {
     border-color: yellow;
 }
 
-
-
 /* Midsection Nav Styles */
 
 .midsection-nav {
+    padding: 10px;
+    background-color: white;
+    padding-inline-start: 10%;
+}
+
+.midsection-nav ul{
     display: flex;
-    flex-direction: row;
+    align-items: center; 
+    border-bottom: 2px solid rgb(102, 102, 102);
+    padding: 10px;
+}
+
+.midsection-nav li {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    text-transform: uppercase;
+}
+
+.midsection-nav a {
+    color: black;
+}
+
+.midsection-nav a:hover {
+    background-color: #eee;
+    padding: 10px;
+    border-radius: 2px;
+}
+
+/* Blog Content Styles */
+
+.blog-content {
+    margin: 0 auto;
+}
+
+.grid-row {
+    display: flex;
+    flex-flow: row wrap;
     justify-content: flex-start;
+    padding: 20px 30px;
+}
+
+.grid-item {
+    box-sizing: border-box;
+    background-color: #eee;
+    border-radius: 5px;
+    margin: 20px;
+}
+
+.grid-item img {
+    max-width: 100%;
+    max-height: auto;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.grid-item h2 {
+    padding: 10px;
+}
+
+.grid-item p {
+    padding: 10px;
+}
+
+@media(max-width: 1333px) {
+    .grid-item {
+      flex-basis: 33.33%;
+    }
+}
+
+@media(max-width: 1073px) {
+     .grid-item {
+      flex-basis: 33.33%;
+    }
+}
+
+@media(max-width: 815px) {
+    .grid-item {
+      flex-basis: 50%;
+    }
+}
+  
+@media(max-width: 555px) {
+    .grid-item {
+      flex-basis: 100%;
+    }
 }
