@@ -16,6 +16,7 @@ ul {
 a {
     text-decoration: none;
     cursor: pointer;
+    color: black;
 }
 
 /* Sidebar Styles */
@@ -58,11 +59,11 @@ a {
 }
 
 .sidebar a:hover {
-    color: white;
+    color: #4CAF50;
 }
 
 .sidebar a:active {
-   color: #4CAF50;
+   color: white;
 }
 
 .sidebar button {
@@ -76,13 +77,13 @@ a {
 }
 
 .sidebar button:hover {
-    color: rgba(204, 204, 204, 0.726);
-    border-color: rgba(204, 204, 204, 0.726);
+    color: #4CAF50;
+    border-color: #4CAF50;
 }
 
-.sidebar button:active {
-    color: #4CAF50;
-    border-color: #4CAF50; 
+.sidebar button:active { 
+    color: rgba(204, 204, 204, 0.726);
+    border-color: rgba(204, 204, 204, 0.726);
 }
 
 #myspace-logo {
@@ -99,11 +100,11 @@ a {
 }
 
 #sign-in:hover {
-    color: rgba(204, 204, 204, 0.726);
+    color: #4CAF50; 
 }
 
 #sign-in:active {
-    color: #4CAF50; 
+    color: rgba(204, 204, 204, 0.726);
 }
 
 
@@ -145,8 +146,8 @@ a {
 }
 
 .hero-text button:active {
-    color: yellow;
-    border-color: yellow;
+    color: #4CAF50;
+    border-color: #4CAF50;
 }
 
 /* Midsection Nav Styles */
@@ -199,13 +200,25 @@ a {
     background-color: #eee;
     border-radius: 5px;
     margin: 20px;
+    overflow: hidden;
 }
 
 .grid-item img {
     max-width: 100%;
-    max-height: auto;
+    max-height: 100%;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
+    background-size: cover;
+    background-position: center;
+    transition: all 0.5s ease;
+}
+
+.grid-item img:hover {
+    transform: scale(1.2);
+}
+
+.grid-item a:hover {
+    text-decoration: underline;
 }
 
 .grid-item h2 {
@@ -239,3 +252,6 @@ a {
       flex-basis: 100%;
     }
 }
+
+/* Footer Styles */
+
