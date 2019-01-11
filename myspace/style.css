@@ -1,3 +1,9 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+}
+
 body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
@@ -7,39 +13,44 @@ ul {
     list-style: none;
 }
 
+a {
+    text-decoration: none;
+}
+
 /* Sidebar Styles */
 
 .sidebar {
     display: flex;
-    align-items: baseline;
     float: left;
     width: 150px;
     background-color: black;
     height: 100vh;
-
+    color: rgba(204, 204, 204, 0.726);
 }
 
 .sidebar img {
     width: 12px;
     height: auto;
-    
 }
 
 .sidebar h2 {
-    color: #ccc;
     font-size: 12px;
+    padding: 12px;
 }
  
 #sidebar-content {
-    margin-left: 0;
-    margin-right: auto;
-    
+    margin: 0% 10%;
+}
+
+.sidebar p {
+    margin: 50% 10%;
+    font-size: 8px;
 }
 
 .sidebar a {
     display: block;
+    color: rgba(204, 204, 204, 0.726);
     padding: 12px;
-    color: #ccc;
 }
 
 .sidebar a:hover {
@@ -51,8 +62,8 @@ ul {
 }
 
 .sidebar button {
-    margin-top: 20px;
-    font-size: 12px;
+    margin: 20px 10%;;
+    font-size: 16px;
     background-color: black;
     border-color: white;
     color: white;
@@ -60,10 +71,34 @@ ul {
     border-radius: 5px;
 }
 
-.sidebar nav {
-    color: white;
+.sidebar button:hover {
+    color: rgba(204, 204, 204, 0.726);
+    border-color: rgba(204, 204, 204, 0.726);
 }
 
+.sidebar button:active {
+    color: #4CAF50;
+    border-color: #4CAF50; 
+}
+
+#myspace-logo {
+    width: 40px;
+    height: auto;
+    padding: 0% 20%;
+}
+
+#sign-in {
+    color: white;
+    padding: 0% 21%;
+}
+
+#sign-in:hover {
+    color: rgba(204, 204, 204, 0.726);
+}
+
+#sign-in:active {
+    color: #4CAF50; 
+}
 
 
 /* Hero Image Styles */
@@ -96,4 +131,24 @@ ul {
     border-radius: 25px;
     background-color: black;
     color: white;
+}
+
+.hero-text button:hover {
+    color: rgba(204, 204, 204, 0.726);
+    border-color: rgba(204, 204, 204, 0.726);
+}
+
+.hero-text button:active {
+    color: yellow;
+    border-color: yellow;
+}
+
+
+
+/* Midsection Nav Styles */
+
+.midsection-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
 }
