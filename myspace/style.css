@@ -28,6 +28,10 @@ a {
     background-color: black;
     height: 100vh;
     color: rgba(204, 204, 204, 0.726);
+    position: fixed;
+    z-index: 1;
+    justify-content: space-between;
+    flex-direction: column;
 }
 
 .sidebar img {
@@ -49,8 +53,8 @@ a {
 }
 
 .sidebar p {
-    margin: 50% 10%;
     font-size: 8px;
+    margin: 10px 20px;
 }
 
 .sidebar a {
@@ -131,6 +135,10 @@ a {
     color: white;
 }
 
+.hero-text h3 {
+    padding-top: 20px;
+}
+
 .hero-text button {
     position: relative;
     margin-top: 20px;
@@ -163,6 +171,8 @@ a {
     align-items: center; 
     border-bottom: 2px solid rgb(102, 102, 102);
     padding: 10px;
+    margin: 0px 40px;
+    margin-left: 80px;
 }
 
 .midsection-nav li {
@@ -174,25 +184,25 @@ a {
 
 .midsection-nav a {
     color: black;
+    padding: 10px;
 }
 
 .midsection-nav a:hover {
     background-color: #eee;
-    padding: 10px;
     border-radius: 2px;
 }
+
 
 /* Blog Content Styles */
 
 .blog-content {
-    margin: 0 auto;
+    margin-left: 150px;
 }
 
 .grid-row {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: flex-start;
-    padding: 20px 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 16px;
 }
 
 .grid-item {
@@ -215,6 +225,7 @@ a {
 
 .grid-item img:hover {
     transform: scale(1.2);
+    cursor: pointer;
 }
 
 .grid-item a:hover {
@@ -227,6 +238,10 @@ a {
 
 .grid-item p {
     padding: 10px;
+}
+
+.hide-overflow {
+    overflow: hidden;
 }
 
 @media(max-width: 1333px) {
@@ -255,3 +270,14 @@ a {
 
 /* Footer Styles */
 
+footer {
+    background-color: black;
+    margin-left: 150px;
+}
+
+footer p {
+    color: #ccc;
+    padding: 20px;
+    font-size: 8px;
+    line-height: 200%;
+}
