@@ -68,3 +68,21 @@ function hist(str) {
   
   hist("tpwaemuqxdmwqbqrjbeosjnejqorxdozsxnrgpgqkeihqwybzyymqeazfkyiucesxwutgszbenzvgxibxrlvmzihcb");
   // "u  3     ***\rw  4     ****\rx  6     ******\rz  6     ******"
+
+  function hist(str) {
+    let result = [];
+    let u = str.match(/u/g);
+    let w = str.match(/w/g);
+    let x = str.match(/x/g);
+    let z = str.match(/z/g);
+  
+    result.push(`u  ${u.join("").length}     ${"*".repeat(u.length)}`);
+    result.push(`w  ${w.join("").length}     ${"*".repeat(w.length)}`);
+    result.push(`x  ${x.join("").length}     ${"*".repeat(x.length)}`);
+    result.push(`z  ${z.join("").length}     ${"*".repeat(z.length)}`);
+    
+    return result.join('\r');
+  }
+  
+  hist("tpwaemuqxdmwqbqrjbeosjnejqorxdozsxnrgpgqkeihqwybzyymqeazfkyiucesxwutgszbenzvgxibxrlvmzihcb");
+  // "u  3     ***\rw  4     ****\rx  6     ******\rz  6     ******"
