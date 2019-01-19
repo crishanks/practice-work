@@ -60,6 +60,12 @@ function createPatternArray(number) {
   return result;
 }
 
+const array = [[1,2,3],
+         [4,5,6],
+         [7,8,9]];
+
+snail(array) //=> [1,2,3,6,9,8,7,4,5];
+
 // pattern:
 // 3 - 2 - 2 - 1 - 1
-// 4 - 3 - 3 - 2 - 2 - 1 -1
+// 4 - 3 - 3 - 2 - 2 - 1 - 1
