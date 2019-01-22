@@ -9,7 +9,27 @@ function createLetterCheck(str1, str2) {
     return letters;
   }
   
-  function countLettersOne(str1) {
+  function hasCorrectLetters(str1, str2) {
+    const letterObject = createLetterCheck(str1, str2);
+    for (let i = 0; i < str1.length; i++) {
+      const currentLetter = str1[i];
+      for (let j = 0; j < str2.length; j++) {
+        const currentCheckLetter = str2[j];
+        if (currentCheckLetter === currentLetter) {
+          letterObject[currentLetter] = true;
+        }
+      }
+    }
+  
+    for (let key in letterObject) {
+      if (letterObject[key] === false) {
+        return false;
+      }
+    }
+    return true;
+  }
+  
+  function countLettersOne(str1, str2) {
     let lettersCountOne = {};
     for (let i = 0; i < str1.length; i++) {
       const exists = lettersCountOne[str1[i]] !== undefined;
@@ -22,70 +42,42 @@ function createLetterCheck(str1, str2) {
     return lettersCountOne;
   }
   
-  function countLettersTwo(str2) {
+  function countLettersTwo(str1, str2) {
     let lettersCountTwo = {};
     for (let i = 0; i < str2.length; i++) {
-      const exists = lettersCountTwo[str2[i]] !== undefined;
+      const currentValue = str2[i];
+      const exists = lettersCountTwo[currentValue] !== undefined;
       if (!exists) {
-        lettersCountTwo[str2[i]] = 1;
+        lettersCountTwo[currentValue] = 1;
       } else  {
-        lettersCountTwo[str2[i]] += 1;
+        lettersCountTwo[currentValue] += 1;
       }
     }
     return lettersCountTwo;
   }
   
-  function updateLettersObject(str1, str2) {
-    let lettersObject = createLetterCheck(str1, str2);
-    const lettersInOne = countLettersOne(str1);
-    const lettersInTwo = countLettersTwo(str2);
-    console.log('letObjBefore: ', lettersInOne)
-  
-    for (let key in lettersInOne) {
-      console.log("key", key);
-      let currentValue = lettersInOne[key];
-      for (let checkKey in lettersInTwo) {
-        console.log("checkKey", checkKey)
-        const currentCheckValue = lettersInTwo[checkKey];
-        if (key === checkKey) {
-          lettersObject[key] = true;
+  function hasEnoughLetters(str1, str2) {
+    const lettersInOne = countLettersOne(str1, str2);
+    const lettersInTwo = countLettersTwo(str1, str2);
+    for (let key in lettersInTwo) {
+      for (let key2 in lettersInOne) {
+        if (key === key2) {
+          if (lettersInOne[key] < lettersInTwo[key]) {
+           return false;
+          }
         }
-      }
-    }
-    return lettersObject;
-  }
-  
-  function updateLettersInOne(str1, str2) {
-    let lettersObject = createLetterCheck(str1, str2);
-    const lettersInOne = countLettersOne(str1);
-    const lettersInTwo = countLettersTwo(str2);
-  
-    for (let key in lettersInOne) {
-      console.log("key", key);
-      let currentValue = lettersInOne[key];
-      for (let checkKey in lettersInTwo) {
-        console.log("checkKey", checkKey)
-        const currentCheckValue = lettersInTwo[checkKey];
-        if (key === checkKey) {
-          lettersInOne[key] -= 1;
-        }
-      }
-    }
-    return lettersInOne;
-  }
-  
-  function scramble(str1, str2) {
-    const finalLettersObject = updateLettersObject(str1, str2);
-    const finalLettersCount = updateLettersInOne(str1, str2);
-    console.log("finalLettersCount: ", finalLettersCount);
-    console.log('finalLettersObject: ', finalLettersObject)
-  
-    for (let key in finalLettersObject) {
-      if (finalLettersObject[key] === false || finalLettersCount[key] < 0) {
-        return false;
       }
     }
     return true;
   }
   
-  scramble("scriptingjava", "javascript"); //true;
+  function scramble(str1, str2) {
+    const hasNeededLetters = hasEnoughLetters(str1, str2);
+    const hasRightLetters = hasCorrectLetters(str1, str2);
+    if(hasNeededLetters && hasRightLetters) {
+      return true;
+    }
+    return false;
+  }
+  
+  scramble("scriptingjava", "javaaaaaaaaaaaaascript"); //false;
