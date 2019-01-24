@@ -8,24 +8,21 @@ function numCheck(n) {
       if (checkNums[j] === undefined) {
         j = checkNums.length - 1;
       }
-      console.log('result: ', result);
-      console.log('numString[i]: ', numString[i]);
-      console.log('checkNums[j]: ', checkNums[j]);
       result += numString[i] * checkNums[j];
       j--;
     }
     return result;
   }
   
-  function checkResult(n) {
-    const resultCheckNum = numCheck(n);
-    console.log('resultCheckNum: ', resultCheckNum);
-    if (resultCheckNum % 13 === n % 13) {
-      return resultCheckNum;
-    } else {
+  function thirt(n) {
+    let resultCheckNum = numCheck(n);
+    while (true) {
       let newNum = resultCheckNum.toString();
-      numCheck(newNum);
+      resultCheckNum = numCheck(newNum);
+      if (Number(newNum) === resultCheckNum) {
+        return resultCheckNum;
+      }
     }
   }
-  
-  checkResult(85299258); // 31
+
+  thirt(85299258); // 31
