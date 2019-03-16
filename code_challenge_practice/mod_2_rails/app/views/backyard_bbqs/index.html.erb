@@ -1,0 +1,5 @@
+<% @backyard_bbqs.each do |byb| %>
+   Location: <%= byb.location %>
+   Dad: <%= link_to byb.dad.name, dad_path(@dad) %>
+   BBQ: <%= link_to byb.bbq.brand, bbq_path(@bbq) %>
+<% end %>

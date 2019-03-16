@@ -1,0 +1,11 @@
+<h1>Create a Backyard Bbq!</h1>
+
+<%= form_for @backyard_bbq do |f| %>
+    <%= f.label :location %>
+    <%= f.text_field :location %>
+
+    <%= f.collection_select :dad_id, Dad.all, :id, :name %>
+
+    <%= f.collection_select :bbq_id, Bbq.all, :id, :brand %>
+    <%= f.submit %>
+<% end %>

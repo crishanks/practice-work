@@ -1,0 +1,9 @@
+<!-- <%= form_tag('/recipes', method: "get") do %>
+    <%= label_tag :title, "Search" %>
+    <%= text_field_tag :title %>
+    <%= submit_tag "Search" %>
+<% end %> -->
+
+<% @recipes.each do |recipe| %>
+    <%= recipe.name %>
+<% end %>

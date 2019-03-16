@@ -1,0 +1,13 @@
+<h1>Make a New Dad</h1>
+
+<%= form_for @dad do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+
+    <%= f.label :joke %>
+    <%= f.text_field :joke %>
+
+    <%= f.collection_check_boxes :bbq_ids, Bbq.all, :id, :brand %>
+
+    <%= f.submit %>
+<% end %>

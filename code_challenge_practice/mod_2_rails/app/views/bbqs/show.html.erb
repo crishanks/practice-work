@@ -1,0 +1,9 @@
+<h1>Here's Your New BBQ</h1>
+
+BBQ: <%= @bbq.brand %><br>
+
+Quality: <%= @bbq.quality %><br>
+
+Dad: <% @bbq.backyard_bbqs.each do |bbb| %>
+    <%= bbb.dad.name %>
+<% end %>

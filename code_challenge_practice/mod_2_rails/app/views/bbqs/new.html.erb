@@ -1,0 +1,15 @@
+<h1>Make a New BBQ</h1>
+
+<%= form_for @bbq do |f| %>
+    <%= f.label :brand %>
+    <%= f.text_field :brand %>
+
+    <%= f.label :quality %>
+    <%= f.text_field :quality %>
+
+    <%= fields_for @backyard_bbq do |bybbq| %>
+        <%= bybbq.collection_select :dad_id, Dad.all, :id, :name %>
+    <% end %>
+
+    <%= f.submit %>
+<% end %>
