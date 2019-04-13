@@ -2,7 +2,6 @@
 
 var removeDuplicates = function(nums) {
   for (let i = 0; i < nums.length - 1;) {
-    console.log(nums)
     const currentNum = nums[i];
     const checkNum = nums[i + 1];
     if (checkNum === currentNum) {
