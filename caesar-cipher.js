@@ -10,8 +10,7 @@ function shiftLetters(offset, str) {
         continue;
       } else if (offsetAsciiNumber > 122) {
         result += String.fromCharCode(offsetAsciiNumber - 26);
-      }
-        else if (offsetAsciiNumber < 97) {
+      } else if (offsetAsciiNumber < 97) {
           result += String.fromCharCode(offsetAsciiNumber + 26);
         } else {
         result += offsetAsciiLetter;
